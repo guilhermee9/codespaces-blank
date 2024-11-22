@@ -2,21 +2,30 @@
 
 using namespace std;
 
-int main() {
-    int n, t1 = 0, t2 = 1, nextTerm;
+int fibonacci(int n) {
+    if (n <= 0) {
+        cout << "Número de termos inválido" << endl;
+        return -1;
+    } else if (n == 1 || n == 2) {
+        return 1;
+    } else {
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+}
 
-    cout << "Digite o número do termo da sequência de Fibonacci: ";
+void imprimirSequencia(int n) {
+    for (int i = 1; i <= n; ++i) {
+        cout << fibonacci(i) << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int n;
+    cout << "Digite a quantidade de termos da sequência de Fibonacci: ";
     cin >> n;
 
-    cout << "Sequência de Fibonacci até o termo " << n << ":" << endl;
-    cout << t1 << ", " << t2 << ", ";
-
-    for (int i = 3; i <= n; ++i) {
-        nextTerm = t1 + t2;
-        cout << nextTerm << ", ";
-        t1 = t2;
-        t2 = nextTerm;
-    }
+    imprimirSequencia(n);
 
     return 0;
 }
